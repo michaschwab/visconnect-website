@@ -86,6 +86,25 @@ app.get('/:gistId/raw/:filePath', function (req, res) {
     });
 });
 
+app.get('/:gistId/cachereset', function (req, res) {
+
+    var gistId = req.params.gistId;
+    var cachedFilePath = 'gist-data/' + gistId + '.json';
+
+    if(fs.existsSync(cachedFilePath))
+    {
+        try {
+            fs.unlinkSync(cachedFilePath);
+            res.send("Success!");
+        } catch(err) {
+            console.error(err);
+            res.send(err);
+        }
+    } else {
+        res.send("No such file.");
+    }
+});
+
 app.get('/', function (req, res) {
     res.sendFile('./index.html', { root: __dirname });
 });
