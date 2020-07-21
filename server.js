@@ -12,12 +12,7 @@ var options = {
   cert: cert
 };*/
 
-
 app.use(express.static('./assets'));
-
-/*app.get('/', function (req, res) {
-    res.send('Hello World!')
-});*/
 
 function loadGist(gistId, callback)
 {
@@ -34,16 +29,12 @@ function loadGist(gistId, callback)
     }
     else
     {
-        var url = 'https://api.github.com/gists/' + gistId + '?access_token=46bd11c38a2bc2b14f64e8f7e45e19c07081a3e0';
+        var url = 'https://api.github.com/gists/' + gistId;
 
         var options = {
-            //url: 'https://api.github.com/gists/' + gistId,
             url: url,
             headers: {
-                'User-Agent': 'visconnect-gists',
-                'username': 'michaschwab',
-
-                //46bd11c38a2bc2b14f64e8f7e45e19c07081a3e0
+                'User-Agent': 'VisConnect',
             }
         };
 

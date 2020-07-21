@@ -2,7 +2,7 @@ function loadGist()
 {
     var idOnly = getGistId();
 
-    document.getElementById('block-link').setAttribute('href', 'https://bl.ocks.org/' + idOnly);
+    //document.getElementById('block-link').setAttribute('href', 'https://bl.ocks.org/' + idOnly);
 
     d3.select('#iframe')
         .attr('src', window.location.origin + '/' + idOnly + '/raw/index.html');
@@ -118,7 +118,7 @@ angular.module('visconnectDemos', [], function ($compileProvider) {
 })
     .controller('visconnectDemosCustomSettingsController', function($scope, $sce)
     {
-        $scope.demos = demos;
+        /*$scope.demos = demos;
         $scope.modeNames = modeNames;
         $scope.modes = $scope.modeNames.map(function(settingName) {
             return {
@@ -137,7 +137,7 @@ angular.module('visconnectDemos', [], function ($compileProvider) {
             return $scope.capitalizeFirstLetter(string.replace(/_/g, ' ').toLowerCase());
         };
 
-        $scope.map = function(arr, f) { return arr.map(f); };
+        $scope.map = function(arr, f) { return arr.map(f); };*/
     });
 
 const demos = [
