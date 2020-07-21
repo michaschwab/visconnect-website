@@ -64,7 +64,7 @@ app.get('/:gistId/raw/:filePath', function (req, res) {
     //res.send(req.params)
 
     var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
-    var filePath = req.params.filePath.replace(/../gi, '');
+    var filePath = req.params.filePath.replace(/.{2+}/gi, '');
 
     loadGist(gistId, function(err, data)
     {
