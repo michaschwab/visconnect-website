@@ -40,7 +40,9 @@ function loadGist(gistId, callback)
             //url: 'https://api.github.com/gists/' + gistId,
             url: url,
             headers: {
-                'User-Agent': 'visconnect-gists'
+                'User-Agent': 'visconnect-gists',
+                'username': 'michaschwab',
+
                 //46bd11c38a2bc2b14f64e8f7e45e19c07081a3e0
             }
         };
@@ -116,7 +118,7 @@ app.get('/:gistId/', function (req, res)
     }
     else
     {
-        res.sendFile('./index.html', { root: __dirname });
+        res.sendFile('./single.html', { root: __dirname });
     }
 });
 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" ng-app="visconnectDemos">
+<head>
+    <meta charset="utf-8">
+    <title>EasyPZ</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="styles.css" rel="stylesheet" />
+    <link href="list-styles.css" rel="stylesheet" />
+    <!--<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+    <script src="blocks-demo.js"></script>
+</head>
+<body class="demo" onload="bodyLoaded();" ng-controller="visconnectDemosCustomSettingsController">
+
+<div id="wrapper">
+    <div class="info-panel">
+        <h1 id="title">VisConnect Demo</h1>
+
+        <p>This demo automatically applies EasyPZ to an SVG using the automatic SVG transformation, as described on
+            <a href="https://easypz.io" target="_blank">easypz.io</a>. The original visualization, without
+            the EasyPZ pan and zoom functionality, can be found on <a id="block-link" target="_blank">this block</a>.
+            You can also
+            <button ng-show="showSettings === 'none'" ng-click="showSettings = 'panmodes'" class="toggleShowSettings">set the EasyPZ pan and zoom settings</button>
+            <button ng-show="showSettings !== 'none'" ng-click="showSettings = 'none'" class="toggleShowSettings">hide the EasyPZ pan and zoom settings</button>.
+        </p>
+
+    </div>
+
+    <iframe id="iframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" width="960" height="960">
+
+    </iframe>
+
+</div>
+
+</body>
+</html>
