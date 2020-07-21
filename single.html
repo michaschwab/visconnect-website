@@ -14,6 +14,14 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 
+    <link href="https://unpkg.com/prismjs@v1.20.0/themes/prism.css" rel="stylesheet" />
+    <link href="https://unpkg.com/prismjs@v1.20.0/plugins/line-highlight/prism-line-highlight.css" rel="stylesheet" />
+    <script src="https://unpkg.com/prismjs@v1.20.0/components/prism-core.min.js"></script>
+    <script src="https://unpkg.com/prismjs@v1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://unpkg.com/prismjs@v1.20.0/plugins/file-highlight/prism-file-highlight.min.js"></script>
+    <script src="https://unpkg.com/prismjs@v1.20.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
+
+    <script src="examples.js"></script>
     <script src="blocks-demo.js"></script>
 </head>
 <body class="demo" ng-controller="visconnectSingleDemoController">
@@ -29,9 +37,15 @@
 
     </div>
 
-    <iframe id="iframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" width="100%" height="700px">
+    <iframe id="iframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" width="1000" height="650">
 
     </iframe>
+
+    <h2>Code</h2>
+    <ul>
+        <li ng-repeat="comment in codeCommentsIndex">{{comment}}</li>
+    </ul>
+    <pre id="code-block"></pre>
 
 </div>
 
