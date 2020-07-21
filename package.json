@@ -1,0 +1,27 @@
+{
+  "name": "visconnect-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaschwab/visconnect-website.git"
+  },
+  "author": "Michail Schwab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaschwab/visconnect-website/issues"
+  },
+  "homepage": "https://github.com/michaschwab/visconnect-website#readme"
+}
