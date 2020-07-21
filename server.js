@@ -63,8 +63,8 @@ function loadGist(gistId, callback)
 app.get('/:gistId/raw/:filePath', function (req, res) {
     //res.send(req.params)
 
-    var gistId = req.params.gistId;
-    var filePath = req.params.filePath;
+    var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
+    var filePath = req.params.filePath.replace(/../gi, '');
 
     loadGist(gistId, function(err, data)
     {
@@ -88,7 +88,7 @@ app.get('/:gistId/raw/:filePath', function (req, res) {
 
 app.get('/:gistId/cachereset', function (req, res) {
 
-    var gistId = req.params.gistId;
+    var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
     var cachedFilePath = 'gist-data/' + gistId + '.json';
 
     if(fs.existsSync(cachedFilePath))
@@ -120,7 +120,7 @@ app.get('/addmode', function (req, res)
 
 app.get('/:gistId/', function (req, res)
 {
-    var gistId = req.params.gistId;
+    var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
 
     if(!gistId)
     {
