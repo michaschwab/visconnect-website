@@ -2,15 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const app = express();
-var https = require('https');
-/*
-var key = fs.readFileSync('/etc/apache2/ssl/easypzdemos-privkey.pem');
-var cert = fs.readFileSync( '/etc/apache2/ssl/easypzdemos-cert.pem' );
-
-var options = {
-  key: key,
-  cert: cert
-};*/
+var mime = require('mime-types')
 
 app.use(express.static('./assets'));
 
@@ -75,6 +67,7 @@ app.get('/:gistId/raw/:filePath', function (req, res) {
         else
         {
             try {
+                res.setHeader("Content-Type", mime.lookup(filePath.split('.').pop()));
                 res.send(data.files[filePath].content);
             }
             catch(e)
