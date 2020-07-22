@@ -1,4 +1,14 @@
 let examples = [
+    {
+        name: 'Drawing',
+        blockid: '432feae93ee2af995a427ad459afd454',
+        imgUrl: 'https://gist.github.com/dsaffo/432feae93ee2af995a427ad459afd454/raw/d245ae1b2e53eb398f294d443bfc78a38ebbcea0/thumbnail.png',
+    },
+    {
+        name: 'Fire Fighters',
+        blockid: '489cabbb7a6ae4c26f9bdd5b473e8d5b',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88224072-f9990e80-cc57-11ea-9fd8-15260aa5edf2.PNG',
+    },
 
 ];
 
