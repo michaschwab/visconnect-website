@@ -9,6 +9,17 @@ let examples = [
         blockid: '489cabbb7a6ae4c26f9bdd5b473e8d5b',
         imgUrl: 'https://user-images.githubusercontent.com/13991410/88224072-f9990e80-cc57-11ea-9fd8-15260aa5edf2.PNG',
     },
+    {
+        name: 'Wheres Waldo',
+        blockid: '05f53164cc14b375065404eca18247a0',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88224728-ef2b4480-cc58-11ea-9cd3-95512e5825d1.png',
+    },
+    {
+        name: 'Planarity Party',
+        blockid: '02e285a64149618cfe8429a323f9c91a',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88226635-e0925c80-cc5b-11ea-8e61-be3457897e4e.PNG',
+    },
+
 
 ];
 

@@ -5,10 +5,18 @@ body {
 }
 
 #wrapper {
+    width: 70%;
+    margin: auto;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+}
+
+#wrapper-main {
     width: 1000px;
     margin: auto;
     background: #fff;
-    padding: 30px;
+    padding: 10px;
     box-shadow: 0 0 10px #ddd;
 }
 @media(max-width: 1000px) {
