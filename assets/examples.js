@@ -100,4 +100,37 @@ let interactions = [
             ]
         }
     },
+    {
+        name: 'Custom Events',
+        blockid: 'd29cd8bb5b596697d92f5da2e6d5c49c',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88573973-93253f00-d00f-11ea-80bf-9faa3d94bee5.PNG',
+        codeHighlights: {
+            'index.html': "4,5,10,45"
+        },
+        codeComments: {
+            'index.html': [
+                "Line 4: Add the PeerJS Dependency",
+                "Line 5: Add the VisConnect Dependency",
+                "Line 10: Add the collaberation='live' attribute to body tag, include the custom event, ignore the events you dont want to sync",
+                "Line 45: Define the custom event to sync"
+            ]
+        }
+    },
+    {
+        name: 'Lasso',
+        blockid: '994a1ab12de6fb4bf21ee5c7a2461466',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88575492-f44e1200-d011-11ea-97c2-afdda23243c0.PNG',
+        codeHighlights: {
+            'index.html': "4,15,16,32,71"
+        },
+        codeComments: {
+            'index.html': [
+                "Line 4: 'collaberation' attribute on body tag to sync the mode switch button",
+                "Line 15: Add the PeerJS Dependency",
+                "Line 16: Add the VisConnect Dependency",
+                "Line 32: Code to handle lasso events",
+                "Line 71: Code to switch lasso modes"
+            ]
+        }
+    },
 ];
