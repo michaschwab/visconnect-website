@@ -19,11 +19,7 @@ let examples = [
         blockid: '02e285a64149618cfe8429a323f9c91a',
         imgUrl: 'https://user-images.githubusercontent.com/13991410/88226635-e0925c80-cc5b-11ea-8e61-be3457897e4e.PNG',
     },
-     {
-        name: 'Planarity Party',
-        blockid: 'b5a7c204edb13ea35deae1333d1f1cb8',
-        imgUrl: 'https://user-images.githubusercontent.com/13991410/88226635-e0925c80-cc5b-11ea-8e61-be3457897e4e.PNG',
-    },
+    
 
 
 ];

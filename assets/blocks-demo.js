@@ -26,9 +26,7 @@ angular.module('visconnectDemos', []).controller('visconnectSingleDemoController
         
         d3.select('#markdown')
             .attr('src', window.location.origin + '/' + idOnly + '/raw/README.md');
-        
-        console.log(window.location.origin + '/' + idOnly + '/raw/README.md');
-        
+    
     }
     
 
