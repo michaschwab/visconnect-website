@@ -20,7 +20,14 @@
     <script src="https://unpkg.com/prismjs@v1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="https://unpkg.com/prismjs@v1.20.0/plugins/file-highlight/prism-file-highlight.min.js"></script>
     <script src="https://unpkg.com/prismjs@v1.20.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
-
+    <script defer src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+  <script type="module">
+    WebComponents.waitFor(() => {
+      let el = document.createElement('script');
+      el.src = 'https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js';
+      document.head.appendChild(el);
+    });
+  </script>
     <script src="examples.js"></script>
     <script src="blocks-demo.js"></script>
 </head>
@@ -40,6 +47,8 @@
     <iframe id="iframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" width="100%" height="800">
 
     </iframe>
+    
+    <zero-md id="markdown"></zero-md>
 
     <h2>Code</h2>
     <ul>
