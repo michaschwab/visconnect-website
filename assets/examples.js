@@ -19,6 +19,11 @@ let examples = [
         blockid: '02e285a64149618cfe8429a323f9c91a',
         imgUrl: 'https://user-images.githubusercontent.com/13991410/88226635-e0925c80-cc5b-11ea-8e61-be3457897e4e.PNG',
     },
+    {
+        name: 'Versor Dragging',
+        blockid: '1c082cd54a229f4ec616dfed18870780',
+        imgUrl: 'https://gist.github.com/dsaffo/1c082cd54a229f4ec616dfed18870780/raw/4384c3f9425ada2d38c44b26ffdf55e6edee8f1f/thumbnail.png',
+    },
     
 
 

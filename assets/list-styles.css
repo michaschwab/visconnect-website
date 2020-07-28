@@ -5,7 +5,7 @@ body {
 }
 
 #wrapper {
-    width: 70%;
+    width: 980px;
     margin: auto;
     background: #fff;
     padding: 10px;
@@ -13,7 +13,7 @@ body {
 }
 
 #wrapper-main {
-    width: 1000px;
+    width: 980px;
     margin: auto;
     background: #fff;
     padding: 10px;
