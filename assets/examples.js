@@ -10,9 +10,9 @@ let examples = [
         imgUrl: 'https://user-images.githubusercontent.com/13991410/88224072-f9990e80-cc57-11ea-9fd8-15260aa5edf2.PNG',
     },
     {
-        name: 'Wheres Waldo',
-        blockid: '05f53164cc14b375065404eca18247a0',
-        imgUrl: 'https://user-images.githubusercontent.com/13991410/88224728-ef2b4480-cc58-11ea-9cd3-95512e5825d1.png',
+        name: 'Wheres the Square',
+        blockid: '8f83c41f08721bd6e1d780384d9faa32',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88954443-f1f5ed00-d289-11ea-97ed-87e15d5a01db.PNG',
     },
     {
         name: 'Planarity Party',
@@ -24,10 +24,18 @@ let examples = [
         blockid: '1c082cd54a229f4ec616dfed18870780',
         imgUrl: 'https://gist.github.com/dsaffo/1c082cd54a229f4ec616dfed18870780/raw/4384c3f9425ada2d38c44b26ffdf55e6edee8f1f/thumbnail.png',
     },
-    
+   
 
 
 ];
+
+/*
+ {
+        name: 'Wheres Waldo',
+        blockid: '05f53164cc14b375065404eca18247a0',
+        imgUrl: 'https://user-images.githubusercontent.com/13991410/88224728-ef2b4480-cc58-11ea-9cd3-95512e5825d1.png',
+    },
+    */
 
 let interactions = [
     {
