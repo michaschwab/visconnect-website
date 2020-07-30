@@ -24,9 +24,11 @@ let examples = [
         blockid: '1c082cd54a229f4ec616dfed18870780',
         imgUrl: 'https://gist.github.com/dsaffo/1c082cd54a229f4ec616dfed18870780/raw/4384c3f9425ada2d38c44b26ffdf55e6edee8f1f/thumbnail.png',
     },
-   
-
-
+      {
+        name: 'VisConnect X Vega',
+        blockid: 'a408826831cb154a2a8df90ff4ff0b13',
+        imgUrl: 'https://gist.github.com/dsaffo/a408826831cb154a2a8df90ff4ff0b13/raw/c5e0c589b6fb4c1056aac1e6b0ce3a923275de3d/thumbnail.png',
+    },
 ];
 
 /*
