@@ -1,3 +1,30 @@
+body {
+    background: #f5f5f5;
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper {
+    width: 980px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    box-shadow: 0 0 10px #ddd;
+}
+
+@media(max-width: 1000px) {
+    #wrapper {
+        padding: 0;
+        width: 100%;
+    }
+}
+
+@media(max-height: 500px) {
+    #wrapper {
+        padding: 0;
+    }
+}
+
 #header {
     position: relative;
     height: 300px;
@@ -13,7 +40,7 @@
     text-align: center;
     width: 100%;
     color: #333;
-    top: 10px;
+    top: 25px;
     border: 1px solid #eee;
     border-right-width: 0;
     border-left-width: 0;
@@ -50,4 +77,23 @@ nav a span {
     width: 100%;
     left: 7px;
     top: 30px;
+}
+
+#intro {
+    margin-top: 20px;
+    width: 100%;
+}
+#intro #description {
+    width: 40%;
+    float: left;
+    font-size: 18px;
+    padding-top: 30px;
+}
+#visconnect-overview-img {
+    background: url(visconnect-collab.png) no-repeat;
+    background-position-x: 100px;
+    background-size: 80%;
+    width: 60%;
+    height: 200px;
+    float: left;
 }
