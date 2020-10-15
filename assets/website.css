@@ -125,6 +125,11 @@ nav a span {
     width: 55%;
     height: 200px;
 }
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
 h2 {
     display: block;
