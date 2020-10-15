@@ -21,7 +21,7 @@
 <body ng-controller="visconnectDemosListController">
 <div id="wrapper">
 
-    <header id="header" class="content">
+    <header id="header">
         <h1>VisConnect: Live Collaboration Online</h1>
 
         <video autoplay muted width="980" height="300" loop poster="http://dummyimage.com/320x240/ffffff/fff">
@@ -30,6 +30,8 @@
     </header>
 
     <nav class="content">
+        <span>Links:</span>
+
         <a target="_blank" href="https://osf.io/ut7e6/">
             <i class="fas fa-file-alt"></i>
             Research Paper
@@ -56,23 +58,22 @@
 
     </nav>
 
+    <h2 class="content">What's VisConnect?</h2>
     <div id="intro" class="content">
         <div id="description">
             With minimal effort, VisConnect allows website and visualization creators to add
             live collaboration. <br /><br />
-            VisConnect synchronizes pointer events, like click and touch, across
-            collaborators, so that they share a common workspace.
+            VisConnect synchronizes pointer events, like click and touch, across collaborators, so
+            that they share a common workspace. It allows each element to be modified by one person
+            at a time.
         </div>
         <div id="visconnect-overview-img"></div>
     </div>
 
-    <!--<p>
-        This is the website for <a href="https://github.com/michaschwab/VisConnect" target="_blank">VisConnect</a>, a JavaScript library for collaborative visualizations.
-        The website is under construction and instructions for how to use VisConnect will be added soon.
-    </p>
-    <p>
-        For now, please take a look at our interaction demos and example gallery!
-    </p>-->
+    <h2 class="content">How to Use</h2>
+    <div class="content instructions">
+        Instructions will be added here soon.
+    </div>
 
     <h2 class="content">Interaction Demos</h2>
     <div class="content demos-list">
@@ -90,7 +91,7 @@
         </a>
     </div>
 
-    <h2 class="content">Authors</h2>
+    <h2 class="content">Team</h2>
     <div class="content demos-list">
         <a ng-repeat="author in authors" class="demo-preview" href="{{author.url}}" target="_blank">
             {{author.first}}<br />
