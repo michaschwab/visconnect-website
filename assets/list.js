@@ -13,6 +13,15 @@ angular.module('visconnectDemos', [])
     .controller('visconnectDemosListController', function ($scope) {
         $scope.examples = examples;
         $scope.interactions = interactions;
+        $scope.authors = [
+            {name: 'Schwab', first: 'Michail', imgUrl: 'micha.png', url: 'https://michailschwab.com'},
+            {name: 'Saffo', first: 'David', imgUrl: 'david.jpg', url: 'https://www.khoury.northeastern.edu/people/david-saffo/'},
+            {name: 'Zhang', first: 'Yixuan', imgUrl: 'janice.jpg', url: 'https://zjanice.github.io/'},
+            {name: 'Sinha', first: 'Shash', imgUrl: 'shash.jpeg', url: 'https://www.linkedin.com/in/shash873/'},
+            {name: 'Nita-Rotaru', first: 'Cristina', imgUrl: 'cristina.jpg', url: 'https://cnitarot.github.io/'},
+            {name: 'Tompkin', first: 'James', imgUrl: 'james.png', url: 'http://jamestompkin.com/'},
+            {name: 'Dunne', first: 'Cody', imgUrl: 'cody.jpg', url: 'https://cody.khoury.northeastern.edu/'},
+            {name: 'Borkin', first: 'Michelle A.', imgUrl: 'michelle.jpg', url: 'https://khoury.northeastern.edu/people/michelle-borkin/'}];
 
         $scope.copyBibtex = function() {
             copyToClipboard(bibtex);

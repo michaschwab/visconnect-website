@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #f5f5f5;
     padding: 0;
@@ -8,14 +12,24 @@ body {
     width: 980px;
     margin: auto;
     background: #fff;
-    padding: 25px;
+    padding: 25px 0;
     box-shadow: 0 0 10px #ddd;
+}
+.content {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 @media(max-width: 1000px) {
     #wrapper {
         padding: 0;
         width: 100%;
+    }
+    .content {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -27,42 +41,46 @@ body {
 
 #header {
     position: relative;
-    height: 300px;
+    height: 285px;
 }
 #header video {
     position: absolute;
-    top: 0;
+    top: -25px;
+    left: -25px;
 }
 #header h1 {
+    position: relative;
     z-index: 10;
-    position: absolute;
     background: rgba(255,255,255,0.9);
     text-align: center;
     width: 100%;
     color: #333;
-    top: 25px;
     border: 1px solid #eee;
     border-right-width: 0;
     border-left-width: 0;
+    height: 40px;
 }
 nav {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    background: #f5f5f5;
+    padding: 10px;
 }
 nav a {
     padding: 7px 12px 7px 34px;
-    background: #eee;
+    background: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
     position: relative;
-    height: 40px;
-    display: inline-block;
+    height: 55px;
+    display: block;
     font-size: 18px;
     text-decoration: none;
     color: #333;
     margin-right: 10px;
 }
 nav a:hover {
-    background: #fff;
+    background: #eee;
     border-color: #aaa;
 }
 nav a i {
@@ -83,20 +101,54 @@ nav a span {
 }
 
 #intro {
-    margin-top: 20px;
+    margin-top: 30px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 #intro #description {
-    width: 40%;
-    float: left;
-    font-size: 18px;
-    padding-top: 30px;
+    width: 45%;
+    font-size: 20px;
+    padding-top: 20px;
 }
 #visconnect-overview-img {
     background: url(visconnect-collab.png) no-repeat;
-    background-position-x: 100px;
-    background-size: 80%;
-    width: 60%;
+    background-position-x: 88px;
+    background-size: 84%;
+    width: 55%;
     height: 200px;
-    float: left;
+}
+
+h2 {
+    display: block;
+    background: #f5f5f5;
+    padding: 10px;
+}
+
+.demos-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.demo-preview {
+    display: block;
+    width: 180px;
+    height: 180px;
+    color: #666;
+    font-weight: bold;
+    padding: 10px 20px 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 0 20px 20px 0;
+}
+.demo-preview img {
+    margin-top: 8px;
+}
+
+.demo-preview:hover {
+    background: #eee;
 }

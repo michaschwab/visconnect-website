@@ -7,7 +7,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="website.css" rel="stylesheet" />
-    <link href="list-styles.css" rel="stylesheet" />
     <!--<link href="styles.css" rel="stylesheet" />-->
     <!--<link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
@@ -22,7 +21,7 @@
 <body ng-controller="visconnectDemosListController">
 <div id="wrapper">
 
-    <header id="header">
+    <header id="header" class="content">
         <h1>VisConnect: Live Collaboration Online</h1>
 
         <video autoplay muted width="980" height="300" loop poster="http://dummyimage.com/320x240/ffffff/fff">
@@ -30,7 +29,7 @@
         </video>
     </header>
 
-    <nav>
+    <nav class="content">
         <a target="_blank" href="https://osf.io/ut7e6/">
             <i class="fas fa-file-alt"></i>
             Research Paper
@@ -57,7 +56,7 @@
 
     </nav>
 
-    <div id="intro">
+    <div id="intro" class="content">
         <div id="description">
             With minimal effort, VisConnect allows website and visualization creators to add
             live collaboration. <br /><br />
@@ -75,26 +74,30 @@
         For now, please take a look at our interaction demos and example gallery!
     </p>-->
 
-    <h2>Interaction Demos</h2>
+    <h2 class="content">Interaction Demos</h2>
+    <div class="content demos-list">
+        <a ng-repeat="demo in interactions" class="demo-preview" href="{{demo.blockid}}/">
+            {{demo.name}}
+            <img src="{{demo.imgUrl}}" width="133" />
+        </a>
+    </div>
 
-    <a ng-repeat="demo in interactions" class="demo-preview" href="{{demo.blockid}}/">
+    <h2 class="content">Examples Gallery</h2>
+    <div class="content demos-list">
+        <a ng-repeat="demo in examples" class="demo-preview" href="{{demo.blockid}}/">
+            {{demo.name}}
+            <img src="{{demo.imgUrl}}" width="133" />
+        </a>
+    </div>
 
-        {{demo.name}}
-        <img src="{{demo.imgUrl}}" width="133" />
-
-    </a>
-    <br style="clear: both" />
-
-    <h2>Examples Gallery</h2>
-
-    <a ng-repeat="demo in examples" class="demo-preview" href="{{demo.blockid}}/">
-
-        {{demo.name}}
-        <img src="{{demo.imgUrl}}" width="133" />
-
-    </a>
-    <br style="clear: both" />
-
+    <h2 class="content">Authors</h2>
+    <div class="content demos-list">
+        <a ng-repeat="author in authors" class="demo-preview" href="{{author.url}}" target="_blank">
+            {{author.first}}<br />
+            {{author.name}}
+            <img src="{{author.imgUrl}}" width="110" />
+        </a>
+    </div>
 </div>
 
 </body>
