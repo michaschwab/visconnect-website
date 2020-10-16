@@ -1,9 +1,10 @@
 const bibtex = `@article{schwab20-visconnect,
-  author={M. {Schwab} and D. {Saffo} and Y. {Zhang} and S. {Sinha} and C. {Nita-Rotaru} and J. {Tompkin} and C. {Dunne} and M. A. {Borkin}},
+  author={Michail {Schwab} and David {Saffo} and Yixuan {Zhang} and Shash {Sinha} and Cristina {Nita-Rotaru} and James {Tompkin} and Cody {Dunne} and Michelle A. {Borkin}},
   journal={IEEE Transactions on Visualization and Computer Graphics}, 
-  title={{VisConnect: Distributed Event Synchronization for Collaborative Visualization}}, 
+  title={{VisConnect}: Distributed Event Synchronization for Collaborative Visualization}, 
   year={2020},
-  doi={10.1109/TVCG.2020.3030366}
+  doi={10.1109/TVCG.2020.3030366},
+  eprint={10.31219/osf.io/ut7e6},
   volume={},
   number={},
   pages={1-1},
