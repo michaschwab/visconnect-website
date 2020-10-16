@@ -201,3 +201,21 @@ h2 {
 .demo-preview:hover {
     background: #83d0e8;
 }
+
+a {
+    color: #333;
+    text-decoration: underline;
+}
+a:hover {
+    text-decoration: none;
+    /*background: #eee;*/
+    background: #83d0e8;
+    color: #fff;
+    /*color: #83d0e8;*/
+}
+
+xmp {
+    font-size: 14px;
+    background: #eee;
+    padding: 8px 15px;
+}
