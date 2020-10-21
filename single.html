@@ -6,8 +6,7 @@
     <base href="/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="styles.css" rel="stylesheet" />
-    <link href="list-styles.css" rel="stylesheet" />
+    <link href="website.css" rel="stylesheet" />
     <!--<link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 
@@ -30,12 +29,16 @@
   </script>
     <script src="examples.js"></script>
     <script src="blocks-demo.js"></script>
+    <script>
+
+    </script>
 </head>
 <body class="demo" ng-controller="visconnectSingleDemoController">
 
 <div id="wrapper">
     <div class="info-panel">
-        <h1 id="title">VisConnect Demo</h1>
+        <p class="content"><a href="..">« Back to Homepage</a></p>
+        <h1 id="title" class="content">VisConnect Demo</h1>
 
         <!--<p>This demo automatically applies EasyPZ to an SVG using the automatic SVG transformation, as described on
             <a href="https://easypz.io" target="_blank">easypz.io</a>. The original visualization, without
@@ -47,10 +50,13 @@
     <iframe id="iframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" width="100%" height="600">
 
     </iframe>
-    
-    <zero-md id="markdown"></zero-md>
 
-    <h2>Code</h2>
+    <div class="content">
+        <zero-md id="markdown"></zero-md>
+    </div>
+
+
+    <h2 class="content">Code</h2>
     <ul>
         <li ng-repeat="comment in codeCommentsIndex">{{comment}}</li>
     </ul>

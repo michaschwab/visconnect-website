@@ -66,6 +66,7 @@ body {
     width: 100%;
     color: #333;
     border-bottom: 3px solid #83d0e8;
+    top: -8px;
 }
 nav {
     display: flex;
@@ -152,7 +153,7 @@ nav a span {
     margin-top: 10px;
 }
 
-h2 {
+h1, h2 {
     display: block;
     background: #fff;
     padding: 10px;
@@ -208,14 +209,18 @@ a {
 }
 a:hover {
     text-decoration: none;
-    /*background: #eee;*/
-    background: #83d0e8;
+}
+p > a:hover {
     color: #fff;
-    /*color: #83d0e8;*/
+    background: #83d0e8;
 }
 
 xmp {
     font-size: 14px;
     background: #eee;
     padding: 8px 15px;
+}
+
+iframe {
+    border: 1px solid #ccc;
 }

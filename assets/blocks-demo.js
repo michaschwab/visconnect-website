@@ -21,8 +21,14 @@ angular.module('visconnectDemos', []).controller('visconnectSingleDemoController
 
         //document.getElementById('block-link').setAttribute('href', 'https://bl.ocks.org/' + idOnly);
 
-        d3.select('#iframe')
+        const iframe = document.getElementById('iframe');
+
+        d3.select(iframe)
             .attr('src', window.location.origin + '/' + idOnly + '/raw/index.html');
+
+        iframe.addEventListener('load', () => {
+            iframe.contentDocument.body.style.overflow = 'hidden';
+        });
         
         d3.select('#markdown')
             .attr('src', window.location.origin + '/' + idOnly + '/raw/README.md');
