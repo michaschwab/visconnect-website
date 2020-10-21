@@ -1,0 +1,393 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+    margin: 0;
+    user-select: none;
+}
+.nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+#wrap {
+    /*width: 20000px;*/
+    width: 100%;
+    height: 100%;
+}
+.question-container {
+    width: 100vw;
+    height: 100%;
+    float: left;
+    top: 0;
+}
+.answers {
+    pointer-events: none;
+}
+</style>
+<meta name="viewport" content="user-scalable=no" />
+</head>
+<body collaboration="safe" ignore-events="all" custom-events="dot-created,dot-moved,dot-moved-finished,next-question">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://unpkg.com/d3-marcon/build/d3-marcon.min.js"></script>
+<script src="https://unpkg.com/peerjs@1.0.4/dist/peerjs.min.js"></script>
+<script src="https://unpkg.com/ssvg@latest/ssvg.js"></script>
+<script src="https://unpkg.com/visconnect@latest/visconnect-bundle.js"></script>
+<script src="./gravity.js"></script>
+
+<div id="wrap" style="margin-left: 0">
+    <div id="q1" class="question-container"></div>
+    <!--<div id="q2" class="question-container"></div>
+    <div id="q3" class="question-container"></div>-->
+</div>
+<script>
+
+const questions = [{
+    q: 'In what areas would collaborative visualization be useful?',
+    a: [/*{a: 'Art', icon: 'art.png'}, */{a: 'Health Care', icon: 'health-care.png'},
+        {a: 'Science', icon: 'science.png'}, {a: 'Education', icon: 'education.png'},
+        {a: 'Otherwise Boring \n Conference Talks', icon: 'micha-transparent.png'}]
+}/*, {
+    q: 'Have you been interested in \n making any of your visualizations collaborative?',
+    a: [{a: 'Yes, and we added collaboration.'}, {a: 'Yes, but we did not end up \n making it collaborative.'},
+        {a: 'No, I haven\'t thought about \n collaboration in my visualizations.'},
+        {a: 'No, I don\'t think collaboration \n would be helpful in my visualizations.'}]
+}, {
+    q: 'What are challenges to \n making visualizations collaborative?',
+    a: [{a: 'Communication', icon: 'speechbubble.png'}, {a: 'Strategies to \n divide the work', icon: 'direction.png'},
+        {a: 'Interaction', icon: 'interaction.png'}, {a: 'Implementation', icon: 'gears.png'}]
+}*/];
+
+const votingBeeswarmBackground = function(question, container, gravity) {
+    const m = d3.marcon().width(window.innerWidth).height(window.innerHeight).element(container);
+    m.render();
+    const width = m.innerWidth();
+    const height = m.innerHeight();
+    const ratio = width / height;
+    const svg = m.svg();
+
+    const linesG = svg.append('g')
+        .attr('class', 'lines');
+
+    const answers = svg.append('g')
+        .attr('class', 'answers');
+
+    const numberAnswers = question.a.length;
+    const gridSize = Math.round(height / (numberAnswers + 1));
+    let centerPoints = [];
+    for(let i = 0; i < numberAnswers; i++) {
+        const y = (i + 1) * gridSize;
+        centerPoints.push({x: width / 2 + 100, y});
+        const answer = question.a[i];
+
+        answers.append('text')
+            //.html(answer.a)
+            .attr('x', width / 2 - 300)
+            .attr('y', y)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', '30')
+            .selectAll('tspan').data(answer.a.split('\n'))
+            .enter()
+            .append('tspan')
+            .attr('x', width / 2 - 300)
+            .attr('dy', function(d, i) { return `${i*30}pt`;})
+            .html(function(d, i) { return d});
+
+        if(answer.icon) {
+            answers.append('image')
+                .attr('href', 'img/' + answer.icon)
+                .attr('x', width / 2 - 150)
+                .attr('y', y - 75)
+                .attr('height', 150)
+        }
+    }
+
+    const lineGen = d3.line();
+    function drawPotentialLines() {
+        const lineStarts = [];
+        let xSteps, ySteps;
+        if(width > height) {
+            xSteps = 100;
+            ySteps = xSteps / ratio;
+        } else {
+            ySteps = 100;
+            xSteps = ySteps * ratio;
+        }
+
+        // Top
+        for(let i = 0; i < xSteps; i++) {
+            lineStarts.push({x: 50 + i * (width-100) / xSteps, y: 50});
+        }
+        // Bottom
+        for(let i = 0; i < xSteps; i++) {
+            lineStarts.push({x: 50 + i * (width-100) / xSteps, y: height - 50});
+        }
+        // Left
+        for(let i = 0; i < ySteps; i++) {
+            lineStarts.push({x: 50, y: 50 + i * (height-100) / ySteps});
+        }
+        // Right
+        for(let i = 0; i < ySteps; i++) {
+            lineStarts.push({x: width - 50, y: 50 + i * (height-100) / ySteps});
+        }
+
+        for(const lineStart of lineStarts) {
+            const positions = [[lineStart.x, lineStart.y]];
+            for(let step = 0; step < 3000; step++) {
+                gravity.applyGravityToNode(1, lineStart);
+                positions.push([lineStart.x, lineStart.y]);
+            }
+            linesG.append('path')
+                .attr('d', lineGen(positions))
+                .attr('stroke', '#e5e5e5')
+                .attr('fill', 'none');
+        }
+    }
+    drawPotentialLines();
+
+    svg.append('text')
+        .attr('x', width / 2)
+        .attr('y', 40)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '40')
+        .selectAll('tspan').data(question.q.split('\n'))
+        .enter()
+        .append('tspan')
+        .attr('x', width / 2)
+        .attr('dy', function(d, i) { return `${i*30}pt`;})
+        .html(function(d, i) { return d});
+
+    svg.append('text')
+        .attr('x', width / 2)
+        .attr('y', 75)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '25')
+        .text(function(d, i) { return 'Click Anywhere to Vote!'});
+
+    const actualSvg = svg.node().parentNode;
+    actualSvg.style.position = 'absolute';
+    actualSvg.style.left = '0';
+    actualSvg.style.top = '0';
+    actualSvg.style['z-index'] = '-10';
+    // Now, rasterize this svg to make compositing easy and fast for the browser.
+    /*setTimeout(async () => {
+        const actualSvg = svg.node().parentNode;
+        const img = await svgUrlToImage(actualSvg);
+        console.log(img);
+        actualSvg.parentNode.removeChild(actualSvg);
+        img.style.position = 'absolute';
+        img.style.left = '0';
+        img.style.top = '0';
+        img.style['z-index'] = '-10';
+    });*/
+}
+
+const votingBeeswarm = function(question, container) {
+    const beeSwarm = {};
+
+    const m = d3.marcon().width(window.innerWidth).height(window.innerHeight).element(container);
+    m.render();
+    const width = m.innerWidth();
+    const height = m.innerHeight();
+    const svg = m.svg();
+    const nodes = [];
+
+    const numberAnswers = question.a.length;
+    const gridSize = Math.round(height / (numberAnswers + 1));
+    let centerPoints = [];
+    for(let i = 0; i < numberAnswers; i++) {
+        const y = (i + 1) * gridSize;
+        centerPoints.push({x: width / 2 + 100, y});
+
+        nodes.push({x: width / 2 + 150, y, id: vc.random().toString(36).substr(2, 9)});
+    }
+
+    const gravity = gravityForce(centerPoints, height).strength(60 * height);
+
+    votingBeeswarmBackground(question, container, gravity);
+
+    var simulation = d3.forceSimulation().alphaDecay(0)
+        .force("gravity", gravity)
+        .force('collision', d3.forceCollide().radius(7))
+        .on("tick", ticked);
+
+    var nodesG = svg.append("g")
+        .attr("class", "nodes");
+
+    const drag = d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+
+    const updateVis = () => {
+        const nodesSelection = nodesG
+            .selectAll("circle")
+            .data(nodes, d => d.id);
+
+        nodesSelection.exit().remove();
+
+        nodesSelection
+            .enter().append("circle")
+            .attr("r", function(d) { return 6 })
+            .attr('id', function(d) { return 'node-' + d.id; })
+            .attr("fill", function(d) { return d.color ? d.color : '#777'; })
+            .call(drag);
+
+        simulation
+            .nodes(nodes)
+            .restart();
+    }
+    updateVis();
+
+    function ticked() {
+        nodesG
+            .selectAll("circle")
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    }
+
+    let lastDragTime = 0;
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+        lastDragTime = 0;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+        if(Date.now() - lastDragTime > 100) {
+            lastDragTime = Date.now();
+            const event = new CustomEvent('dot-moved', {detail: { x: d3.event.x / width, y: d3.event.y / height, id: d.id }});
+            document.body.dispatchEvent(event);
+        }
+    }
+
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+        const event = new CustomEvent('dot-moved-finished', {detail: { x: d3.event.x / width, y: d3.event.y / height, id: d.id }});
+        document.body.dispatchEvent(event);
+        lastDragTime = Date.now();
+    }
+
+    d3.select('body').on('click', () => {
+        if(d3.event.target === svg.node().parentNode && Date.now() - lastDragTime > 150) {
+            const event = new CustomEvent('dot-created', {detail: { x: d3.event.x / width, y: d3.event.y / height, id: Math.random().toString(36).substr(2, 9) }});
+            document.body.dispatchEvent(event);
+        }
+    });
+
+    document.body.addEventListener('dot-created', (e) => {
+        nodes.push({x: e.detail.x * width, y: e.detail.y * height, color: e.collaboratorColor, id: e.detail.id});
+        updateVis();
+    });
+
+    document.body.addEventListener('dot-moved', (e) => {
+        if(!e.isLocalEvent) {
+            const filtered = nodes.filter(n => n.id === e.detail.id);
+            if(filtered.length === 1) {
+                const node = filtered[0];
+                node.fx = e.detail.x * width;
+                node.fy = e.detail.y * height;
+                updateVis();
+            }
+        }
+    });
+    document.body.addEventListener('dot-moved-finished', (e) => {
+        if(!e.isLocalEvent) {
+            const filtered = nodes.filter(n => n.id === e.detail.id);
+            if(filtered.length === 1) {
+                const node = filtered[0];
+                node.x = e.detail.x * width;
+                node.y = e.detail.y * height;
+                node.fx = null;
+                node.fy = null;
+                updateVis();
+            }
+        }
+    });
+
+    beeSwarm.getVotes = () => {
+        let votes = {};
+        let i = 0;
+        for(const center of centerPoints) {
+            votes[i] = nodes.filter(n => height * 0.1 > Math.sqrt(Math.pow(n.x - center.x, 2) + Math.pow(n.y - center.y, 2)));
+            i++;
+        }
+        console.log(votes);
+        return votes;
+    };
+
+    const actualSvg = svg.node().parentNode;
+    new SSVG({svg: actualSvg});
+
+    return beeSwarm;
+};
+
+let questionIndex = 0;
+votingBeeswarm(questions[questionIndex], document.getElementById(`q${questionIndex+1}`));
+
+function nextQuestion() {
+    const event = new CustomEvent('next-question', {detail: {}});
+    document.body.dispatchEvent(event);
+}
+
+document.body.addEventListener('next-question', () => {
+    questionIndex++;
+    votingBeeswarm(questions[questionIndex], document.getElementById(`q${questionIndex+1}`));
+
+    const prevMargin = parseInt(d3.select('#wrap').style('margin-left'));
+
+    d3.select('#wrap')
+        .transition()
+        .duration(2000)
+        .style('margin-left', `${prevMargin-100}vw`);
+});
+/*
+function getSvgUrl(svg) {
+    const data = (new XMLSerializer()).serializeToString(svg);
+    const blob = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
+    return URL.createObjectURL(blob);
+}
+
+function svgUrlToImage(svg) {
+    return new Promise(async (resolve, reject) => {
+        const svgUrl = getSvgUrl(svg);
+        const svgImage = document.createElement('img');
+        svgImage.setAttribute('class', 'data-loader-img');
+
+        document.body.appendChild(svgImage);
+        svgImage.src = svgUrl;
+
+        await waitForLoad([svgImage]);
+
+        resolve(svgImage);
+    });
+}
+
+function waitForLoad(elements) {
+    return new Promise((resolve, reject) => {
+        let framesLoaded = 0;
+        const cb = () => {
+            framesLoaded++;
+            if(framesLoaded === elements.length) {
+                resolve();
+            }
+        };
+
+        for(const element of elements) {
+            element.onload = cb;
+        }
+    });
+}*/
+
+// to prevent horizontal drag on mobile
+document.addEventListener("touchmove",function(event){event.preventDefault();}, {passive: false});
+
+
+</script>
+</body>
+</html>
