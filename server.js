@@ -120,7 +120,7 @@ app.get('/:gistId/', function (req, res)
     }
 });
 
-app.listen(3002, function () {
+app.listen(80, function () {
 //https.createServer(options, app).listen(3000, function () {
-    console.log('VisConnect demos app listening on port 3002!')
+    console.log('VisConnect demos app listening on port 80!')
 });
