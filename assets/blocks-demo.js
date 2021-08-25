@@ -68,7 +68,7 @@ angular.module('visconnectDemos', []).controller('visconnectSingleDemoController
             href += '/';
         }
         var base_url = window.location.origin;
-        var baseRemoved = href.substr(base_url.length + 1);
+        var baseRemoved = href.substr(base_url.length + 1+ 'demos/'.length);
         return baseRemoved.substr(0, baseRemoved.indexOf('/'));
     }
 
