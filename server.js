@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const app = express();
-const { PeerServer } = require('peer');
+const { ExpressPeerServer } = require('peer');
 var mime = require('mime-types');
 
 app.use(express.static('./assets'));
@@ -121,17 +121,24 @@ app.get('/:gistId/', function (req, res)
     }
 });
 
-app.listen(80, function () {
+
+const server = app.listen(80, function () {
 //https.createServer(options, app).listen(3000, function () {
     console.log('VisConnect demos app listening on port 80!')
 });
 
 
+const peerServer = ExpressPeerServer(server, {
+    path: ''
+});
+
+app.use('/peerjs', peerServer);
+/*
 const server = PeerServer({
     port: 9099,
     path: '',
-    /*ssl: {
+    /!*ssl: {
         key: fs.readFileSync('/etc/letsencrypt/live/michaschwab.de/privkey.pem'),
         cert: fs.readFileSync('/etc/letsencrypt/live/michaschwab.de/fullchain.pem')
-    }*/
-});
+    }*!/
+});*/
