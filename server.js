@@ -4,6 +4,7 @@ const request = require('request');
 const app = express();
 const { ExpressPeerServer } = require('peer');
 var mime = require('mime-types');
+require('@google-cloud/debug-agent').start({serviceContext: {enableCanary: true}});
 
 app.use(express.static('./assets'));
 

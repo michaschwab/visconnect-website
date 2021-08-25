@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "@google-cloud/debug-agent": "^5.2.8",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
