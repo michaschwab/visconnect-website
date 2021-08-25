@@ -24,14 +24,14 @@ angular.module('visconnectDemos', []).controller('visconnectSingleDemoController
         const iframe = document.getElementById('iframe');
 
         d3.select(iframe)
-            .attr('src', window.location.origin + '/' + idOnly + '/raw/index.html');
+            .attr('src', window.location.origin + '/demos/' + idOnly + '/raw/index.html');
 
         iframe.addEventListener('load', () => {
             iframe.contentDocument.body.style.overflow = 'hidden';
         });
         
         d3.select('#markdown')
-            .attr('src', window.location.origin + '/' + idOnly + '/raw/README.md');
+            .attr('src', window.location.origin + '/demos/' + idOnly + '/raw/README.md');
     
     }
     
@@ -39,7 +39,7 @@ angular.module('visconnectDemos', []).controller('visconnectSingleDemoController
 
     $scope.addExampleInfo = () => {
         var idOnly = $scope.getGistId();
-        d3.select('#code-block').attr('data-src', idOnly + '/raw/index.html');
+        d3.select('#code-block').attr('data-src', 'demos/' + idOnly + '/raw/index.html');
 
         if(!$scope.exampleInfo) {
             return;
