@@ -53,7 +53,7 @@ function loadGist(gistId, callback)
     }
 }
 
-app.get('/:gistId/raw/:filePath', function (req, res) {
+app.get('/demos/:gistId/raw/:filePath', function (req, res) {
     //res.send(req.params)
 
     var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
@@ -80,7 +80,7 @@ app.get('/:gistId/raw/:filePath', function (req, res) {
     });
 });
 
-app.get('/:gistId/cachereset', function (req, res) {
+app.get('/demos/:gistId/cachereset', function (req, res) {
 
     var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
     var cachedFilePath = 'gist-data/' + gistId + '.json';
