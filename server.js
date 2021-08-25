@@ -2,7 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const request = require('request');
 const app = express();
-var mime = require('mime-types')
+const { PeerServer } = require('peer');
+var mime = require('mime-types');
 
 app.use(express.static('./assets'));
 
@@ -123,4 +124,14 @@ app.get('/:gistId/', function (req, res)
 app.listen(80, function () {
 //https.createServer(options, app).listen(3000, function () {
     console.log('VisConnect demos app listening on port 80!')
+});
+
+
+const server = PeerServer({
+    port: 9099,
+    path: '',
+    /*ssl: {
+        key: fs.readFileSync('/etc/letsencrypt/live/michaschwab.de/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/michaschwab.de/fullchain.pem')
+    }*/
 });
