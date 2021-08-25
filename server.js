@@ -107,7 +107,7 @@ app.get('', function (req, res) {
     res.sendFile('./index.html', { root: __dirname });
 });
 
-app.get('/:gistId/', function (req, res)
+app.get('/demos/:gistId/', function (req, res)
 {
     var gistId = req.params.gistId.replace(/[^0-9a-z]/gi, '');
 
